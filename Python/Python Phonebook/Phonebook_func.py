@@ -1,14 +1,14 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
 #
-# Python Ver:   3.5.1
+# Python Ver:   3.7.3
 #
-# Author:       Daniel A. Christie
+# Author:       Blake A. Schuchart
 #
 # Purpose:      Phonebook Demo. Demonstrating OOP, Tkinter GUI module,
 #               using Tkinter Parent and Child relationships.
 #
 # Tested OS:  This code was written and tested to work with Windows 10.
+
 
 import os
 from tkinter import *
@@ -18,8 +18,8 @@ import sqlite3
 
 # Be sure to import our other modules 
 # so we can have access to them
-import drill50_phonebook_main
-import drill50_phonebook_gui
+import Phonebook_main
+import Phonebook_gui
 
 
 
@@ -62,6 +62,7 @@ def create_db(self):
 
 
 def first_run(self):
+    data = ('John', 'Doe', 'John Doe', '111-111-1111', 'jdoe@email.com')
     conn = sqlite3.connect('db_phonebook.db')
     with conn:
         cur = conn.cursor()
@@ -100,7 +101,6 @@ def onSelect(self,event):
             self.txt_phone.insert(0,data[2])
             self.txt_email.delete(0,END)
             self.txt_email.insert(0,data[3])
-
 
 def addToList(self):
     var_fname = self.txt_fname.get()
@@ -162,12 +162,12 @@ def onDelete(self):
     conn.close()
 
 
-def onDeleted(self):
+    def onDeleted(self):
     # clear the text in these textboxes
-    self.txt_fname.delete(0,END)
-    self.txt_lname.delete(0,END)
-    self.txt_phone.delete(0,END)
-    self.txt_email.delete(0,END)
+        self.txt_fname.delete(0,END)
+        self.txt_lname.delete(0,END)
+        self.txt_phone.delete(0,END)
+        self.txt_email.delete(0,END)
 ##    onRefresh(self) # update the listbox of the changes
     try:
         index = self.lstList1.curselection()[0]
@@ -199,7 +199,6 @@ def onRefresh(self):
                     self.lstList1.insert(0,str(item))
                     i = i + 1
     conn.close()
-
 
 def onUpdate(self):
     try:
@@ -243,7 +242,6 @@ def onUpdate(self):
     else:
         messagebox.showerror("Missing information","Please select a name from the list. \nThen edit the phone or email information.")
     onClear(self)
-
 
 if __name__ == "__main__":
     pass

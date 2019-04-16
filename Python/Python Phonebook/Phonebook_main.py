@@ -1,31 +1,12 @@
-#!/usr/bin/python
-"""
-    #!/usr/bin/python
-    It's a recommended way, proposed in documentation:
-    2.2.2. Executable Python Scripts.
-    In a Unix-like operating system, the program loader
-    takes the presence of these two characters as an
-    indication that the file is a script, and tries to
-    execute that script using the interpreter specified
-    by the rest of the first line in the file.
-"""
-# -*- coding: utf-8 -*-
-"""
-    # -*- coding: utf-8 -*-
-    This sets the charset if it is present on the first two lines of the file.
-    this is Syntax to declare the encoding of a Python source file. It's discussed
-    in PEP 0263 - Defining Python Source Code Encodings.
-    https://www.python.org/dev/peps/pep-0263/
-"""
 #
-# Python Ver:   3.5.1
+# Python Ver:   3.7.3
 #
-# Author:       Daniel A. Christie
+# Author:       Blake A. Schuchart
 #
 # Purpose:      Phonebook Demo. Demonstrating OOP, Tkinter GUI module,
 #               using Tkinter Parent and Child relationships.
 #
-# Tested OS:  This code was written and tested to work with Windows 10.
+# Tested OS:  This code was written and tested to work with Windows 10 Pro.
 
 
 from tkinter import *
@@ -34,9 +15,8 @@ import tkinter as tk
 
 # Be sure to import our other modules 
 # so we can have access to them
-import drill50_phonebook_gui
-import drill50_phonebook_func
-
+import Phonebook_gui
+import Phonebook_func
 
 # Frame is the Tkinter frame class that our own class will inherit from
 class ParentWindow(Frame):
@@ -48,20 +28,22 @@ class ParentWindow(Frame):
         self.master.minsize(500,300) #(Height, Width)
         self.master.maxsize(500,300)
         # This CenterWindow method will center our app on the user's screen
-        drill50_phonebook_func.center_window(self,500,300)
+        Phonebook_func.center_window(self,500,300)
         self.master.title("The Tkinter Phonebook Demo")
         self.master.configure(bg="#F0F0F0")
         # This protocol method is a tkinter built-in method to catch if 
         # the user clicks the upper corner, "X" on Windows OS.
-        self.master.protocol("WM_DELETE_WINDOW", lambda: drill50_phonebook_func.ask_quit(self))
+        self.master.protocol("WM_DELETE_WINDOW", lambda: Phonebook_func.ask_quit(self))
         arg = self.master
 
         # load in the GUI widgets from a separate module, 
         # keeping your code comparmentalized and clutter free
-        drill50_phonebook_gui.load_gui(self)
+        Phonebook_gui.load_gui(self)
         
         # Instantiate the Tkinter menu dropdown object
         # This is the menu that will appear at the top of our window
+        # Keep the menu commented unless needed, or it just makes it look nicer
+        
         menubar = Menu(self.master)
         filemenu = Menu(menubar, tearoff=0)
         filemenu.add_separator()
@@ -73,6 +55,7 @@ class ParentWindow(Frame):
         helpmenu.add_separator()
         helpmenu.add_command(label="About This Phonebook Demo") # add_command is a child menubar item of the add_cascde parent item
         menubar.add_cascade(label="Help", menu=helpmenu) # add_cascade is a parent menubar item (visible heading)
+        
         """
             Finally, we apply the config method of the widget to display the menu
             From here we could also pass in additional aprams for additional 
@@ -80,7 +63,7 @@ class ParentWindow(Frame):
         """
         self.master.config(menu=menubar, borderwidth='1')
 
-        
+
 """
     It is from these few lines of code that Python will begin our gui and application
     The (if __name__ == "__main__":) part is basically telling Python that if this script
@@ -92,6 +75,7 @@ class ParentWindow(Frame):
     root.mainloop()             #This ensures the Tkinter class object, our window, to keep looping
                                 #meaning, it will stay open until we instruct it to close
 """
+
 if __name__ == "__main__":
     root = tk.Tk()
     App = ParentWindow(root)
