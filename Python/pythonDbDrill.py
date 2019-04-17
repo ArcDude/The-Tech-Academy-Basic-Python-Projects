@@ -13,7 +13,10 @@ with conn:
         col_file4 TEXT, \
         col_file5 TEXT, \
         col_file6 TEXT, \
-        col_file7 TEXT \
+        col_file7 TEXT, \
+        col_file8 TEXT, \
+        col_file9 TEXT, \
+        col_file10 TEXT \
         )")
     conn.commit()
 conn.close()
@@ -24,9 +27,9 @@ conn = sqlite3.connect('academy.db')
 with conn:
     cur = conn.cursor()
     cur.execute ("INSERT INTO tbl_fileList(col_file1, col_file2, col_file3, col_file4,\
-                col_file5, col_file6, col_file7) VALUES (?,?,?,?,?,?,?)", \
-                ('information.docx', 'Hello.txt', 'myImage.png', 'myMovie.mpg', 'World.txt',\
-                 'data.pdf', 'myPhoto.jpg'))
+                col_file5, col_file6, col_file7, col_file8, col_file9, col_file10) VALUES (?,?,?,?,?,?,?,?,?,?)", \
+                ('information.docx', 'Did I.txt', 'myImage.png', 'myMovie.mpg', 'Do it?.txt',\
+                 'data.pdf', 'myPhoto.jpg','annimation.gif', 'word.doc', 'myMusic.mp3'))
     conn.commit()
 conn.close()
 
