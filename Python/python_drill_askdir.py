@@ -29,13 +29,12 @@ def browse_button():
 
 
 
-root = Tk()
+root = tk.Tk()
+
 folder_path = StringVar()
 lbl1 = Label(master=root,textvariable=folder_path)
 lbl1.grid(row=0, column=1)
-button2 = Button(text="Path for Directory", command=browse_button)
+button2 = Button(text="Choose your path please", command=browse_button)
 button2.grid(row=0, column=3)
-
-mainloop()
-
-
+App = ParentWindow(root)
+root.mainloop()
